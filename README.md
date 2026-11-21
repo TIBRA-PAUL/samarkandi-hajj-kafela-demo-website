@@ -42,3 +42,4 @@ The Arabic Talbiyah line and the Bangla/English plan, FAQ and checklist wording 
 - Fonts load from Google Fonts (needs internet); fallbacks are set. To self-host, download them and edit the `<link>` in each page.
 - Animations are CSS-only and turn off for visitors with "reduce motion" enabled.
 - The contact form has no server: it opens WhatsApp with the message pre-filled. For email delivery, add a form service (Formspree, Netlify Forms) later.
+# samarkandi-hajj-kafela-demo-website
