@@ -53,25 +53,27 @@ html[lang="en"]{--disp:'Plus Jakarta Sans','Hind Siliguri',sans-serif}
 @keyframes pagein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* ---------- nav ---------- */
-.nav{position:relative;z-index:3;max-width:1200px;margin:0 auto;padding:16px 24px 0}
-.nav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:10px 12px 10px 16px;background:rgba(255,255,255,.9);border:1px solid #fff;border-radius:22px;box-shadow:0 12px 40px rgba(20,88,199,.14)}
-.brand{text-decoration:none;display:flex;align-items:center;gap:12px;color:var(--navy);background:none;border:0;padding:0;text-align:left}
-.brand b{display:block;font-family:var(--disp);font-size:20px;font-weight:800;line-height:1.1}
+.nav{position:relative;z-index:20;max-width:1200px;margin:0 auto;padding:16px 24px 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px 10px 16px;background:rgba(255,255,255,.94);border:1px solid #fff;border-radius:22px;box-shadow:0 12px 40px rgba(20,88,199,.14);-webkit-backdrop-filter: blur(10px); backdrop-filter:blur(10px)}
+.brand{text-decoration:none;display:flex;align-items:center;gap:11px;color:var(--navy);background:none;border:0;padding:0;text-align:left;min-width:0}
+.brand svg{flex:none}
+.brand b{display:block;font-family:var(--disp);font-size:20px;font-weight:800;line-height:1.12}
 .brand small{display:block;margin-top:2px;font-size:12px;font-weight:600;color:var(--blue)}
-.links{display:flex;align-items:center;gap:18px}
-.nl{display:inline-flex;align-items:center;text-decoration:none;background:none;border:0;border-bottom:3px solid transparent;min-height:44px;padding:0 4px;color:var(--navy);font-weight:700;font-size:15px}
+.nav-drawer{display:contents}
+.links{display:flex;align-items:center;gap:18px;order:2}
+.nl{display:inline-flex;align-items:center;text-decoration:none;background:none;border:0;border-bottom:3px solid transparent;min-height:44px;padding:0 4px;color:var(--navy);font-weight:700;font-size:15px;transition:color .2s ease}
 .nl:hover{color:var(--blue)}
 .nl.on{border-bottom-color:var(--green)}
-.right{display:flex;align-items:center;gap:10px}
+.right{display:flex;align-items:center;gap:10px;order:3;flex:none}
 .lang{display:inline-flex;background:var(--mist);border-radius:999px;padding:3px}
-.lang button{border:0;background:transparent;min-height:40px;min-width:52px;padding:0 14px;border-radius:999px;font-weight:700;color:var(--navy)}
+.lang button{border:0;background:transparent;min-height:38px;min-width:48px;padding:0 12px;border-radius:999px;font-weight:700;font-size:14px;color:var(--navy);transition:background .2s ease,color .2s ease}
 .lang button.on{background:var(--blue);color:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 28px;border:0;border-radius:999px;font-weight:700;font-size:16px;transition:transform .2s ease,box-shadow .2s ease}
-.btn:hover{transform:translateY(-2px)}
-.btn-g{background:var(--green);color:#fff;box-shadow:0 10px 24px rgba(10,138,64,.32)}
-.btn-b{background:var(--blue);color:#fff;box-shadow:0 10px 24px rgba(20,88,199,.3)}
-.btn-w{background:#fff;color:var(--navy);border:1px solid var(--line)}
-.btn svg{width:20px;height:20px}
+.nav-tog{display:none;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--navy);transition:background .2s ease,border-color .2s ease}
+.nav-tog:hover{background:var(--mist);border-color:var(--sky)}
+.nav-tog .ic-close{display:none}
+.nav-tog[aria-expanded="true"] .ic-open{display:none}
+.nav-tog[aria-expanded="true"] .ic-close{display:block}
+.nav-cta-mob{display:none}
 
 /* ---------- hero ---------- */
 .hero{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,470px),1fr));gap:30px;align-items:center;max-width:1200px;margin:0 auto;padding:44px 24px 96px}
@@ -333,11 +335,18 @@ html[lang="en"]{--disp:'Plus Jakarta Sans','Hind Siliguri',sans-serif}
   .rv{animation:rvup linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
   @keyframes rvup{from{opacity:.35;transform:translateY(26px)}to{opacity:1;transform:none}}
 }
-
 @media (max-width:900px){
   .nav{padding:12px 16px 0}
-  .links{order:3;width:100%;overflow-x:auto;gap:14px}
-  .nl{white-space:nowrap}
+  .nav-in{flex-wrap:wrap;padding:10px 12px}
+  .nav-cta-desk{display:none}
+  .nav-tog{display:inline-flex}
+  .nav-drawer{display:none;order:4;width:100%;flex-direction:column;gap:8px;padding-top:12px;margin-top:8px;border-top:1px solid var(--line)}
+  .nav-drawer.open{display:flex;animation:pagein .22s ease both}
+  .links{flex-direction:column;align-items:stretch;width:100%;gap:4px}
+  .nl{width:100%;min-height:46px;padding:10px 14px;border-bottom:0;border-left:4px solid transparent;border-radius:12px;font-size:16px}
+  .nl:hover{background:var(--paper)}
+  .nl.on{background:var(--mint);border-left-color:var(--green);color:var(--greend)}
+  .nav-cta-mob{display:inline-flex;width:100%;margin-top:4px}
   .hero{padding:30px 20px 90px}
   .phead{padding:30px 20px 160px}
   .sec{padding:72px 0}
@@ -353,10 +362,17 @@ html[lang="en"]{--disp:'Plus Jakarta Sans','Hind Siliguri',sans-serif}
   .chip.a{left:0}.chip.b{right:0}
   .city{min-height:460px;border-radius:180px 180px 26px 26px}
 }
+@media (max-width:520px){
+  .brand svg{width:38px;height:38px}
+  .brand b{font-size:16px}
+  .brand small{font-size:11px}
+  .right{gap:6px}
+  .lang button{min-height:34px;min-width:42px;padding:0 9px;font-size:13px}
+  .nav-tog{width:40px;height:40px;border-radius:12px}
+}
 @media (max-width:700px){
   .route svg.rt{display:none}
   .rtm{display:block}
-  .nav-in .btn-g{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}

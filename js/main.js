@@ -99,7 +99,35 @@
       window.open("https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
     });
   }
-
+  
+/* ---------- 4. mobile nav toggle ---------- */
+  var navTog = document.getElementById("nav-toggle");
+  var navDrawer = document.getElementById("nav-drawer");
+  if (navTog && navDrawer) {
+    function setNav(open) {
+      navTog.setAttribute("aria-expanded", open ? "true" : "false");
+      navTog.setAttribute("aria-label", open ? (lang === "bn" ? "মেনু বন্ধ করুন" : "Close menu") : (lang === "bn" ? "মেনু খুলুন" : "Open menu"));
+      navDrawer.classList.toggle("open", open);
+    }
+    navTog.addEventListener("click", function () {
+      setNav(navTog.getAttribute("aria-expanded") !== "true");
+    });
+    navDrawer.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a")) setNav(false);
+    });
+    document.addEventListener("click", function (e) {
+      if (navDrawer.classList.contains("open") && !e.target.closest(".nav-in")) setNav(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navDrawer.classList.contains("open")) {
+        setNav(false);
+        navTog.focus();
+      }
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900 && navDrawer.classList.contains("open")) setNav(false);
+    });
+  }
   /* ---------- start ---------- */
   var start = CFG.defaultLanguage || "bn";
   if (CFG.rememberLanguage !== false) start = store("lang") || start;

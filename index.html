@@ -92,10 +92,12 @@
             <path d="M15 29a9 9 0 0 1 18 0z" fill="#3FD07F"/>
             <path d="M24 12a5 5 0 1 0 3 8 4 4 0 1 1-3-8z" fill="#E2B84A"/>
           </svg>
-          <span><b data-i18n="samarkandi_hajj_kafela">সমরকন্দী হজ্জ কাফেলা</b><small data-i18n="travels_and_tours">ট্রাভেলস এন্ড ট্যুরস</small></span> </a>
-        <nav class="links" aria-label="Main">
-          <a class="nl on" aria-current="page" href="index.html" data-i18n="home">হোম</a> <a class="nl" aria-current="false" href="about.html" data-i18n="about_us">আমাদের সম্পর্কে</a> <a class="nl" aria-current="false" href="packages.html" data-i18n="packages">প্যাকেজ</a> <a class="nl" aria-current="false" href="contact.html" data-i18n="contact">যোগাযোগ</a>
-        </nav>
+          <span>
+            <b data-i18n="samarkandi_hajj_kafela">সমরকন্দী হজ্জ কাফেলা</b>
+            <small data-i18n="travels_and_tours">ট্রাভেলস এন্ড ট্যুরস</small>
+          </span>
+        </a>
+
         <div class="right">
           <div class="lang" role="group" aria-label="Language">
             <button type="button" class="on" data-lang="bn" lang="bn" aria-pressed="true" data-noi18n="1">
@@ -105,7 +107,34 @@
               EN
             </button>
           </div>
-          <a class="btn btn-g" href="contact.html" data-i18n="book_now">বুকিং করুন</a>
+
+          <a class="btn btn-g nav-cta-desk" href="contact.html" data-i18n="book_now">বুকিং করুন</a>
+
+          <button
+            type="button"
+            class="nav-tog"
+            id="nav-toggle"
+            aria-expanded="false"
+            aria-controls="nav-drawer"
+            aria-label="মেনু খুলুন"
+          >
+            <svg class="ic ic-open" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg class="ic ic-close" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="nav-drawer" id="nav-drawer">
+          <nav class="links" aria-label="Main">
+            <a class="nl on" aria-current="page" href="index.html" data-i18n="home">হোম</a>
+            <a class="nl" aria-current="false" href="about.html" data-i18n="about_us">আমাদের সম্পর্কে</a>
+            <a class="nl" aria-current="false" href="packages.html" data-i18n="packages">প্যাকেজ</a>
+            <a class="nl" aria-current="false" href="contact.html" data-i18n="contact">যোগাযোগ</a>
+          </nav>
+          <a class="btn btn-g nav-cta-mob" href="contact.html" data-i18n="book_now">বুকিং করুন</a>
         </div>
       </div>
     </header>
