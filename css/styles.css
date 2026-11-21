@@ -54,9 +54,10 @@ html[lang="en"]{--disp:'Plus Jakarta Sans','Hind Siliguri',sans-serif}
 
 /* ---------- nav ---------- */
 .nav{position:relative;z-index:20;max-width:1200px;margin:0 auto;padding:16px 24px 0}
-.nav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px 10px 16px;background:rgba(255,255,255,.94);border:1px solid #fff;border-radius:22px;box-shadow:0 12px 40px rgba(20,88,199,.14);-webkit-backdrop-filter: blur(10px); backdrop-filter:blur(10px)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px 10px 16px;background:rgba(255,255,255,.94);border:1px solid #fff;border-radius:22px;box-shadow:0 12px 40px rgba(20,88,199,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .brand{text-decoration:none;display:flex;align-items:center;gap:11px;color:var(--navy);background:none;border:0;padding:0;text-align:left;min-width:0}
 .brand svg{flex:none}
+.brand span{min-width:0}
 .brand b{display:block;font-family:var(--disp);font-size:20px;font-weight:800;line-height:1.12}
 .brand small{display:block;margin-top:2px;font-size:12px;font-weight:600;color:var(--blue)}
 .nav-drawer{display:contents}
@@ -73,7 +74,79 @@ html[lang="en"]{--disp:'Plus Jakarta Sans','Hind Siliguri',sans-serif}
 .nav-tog .ic-close{display:none}
 .nav-tog[aria-expanded="true"] .ic-open{display:none}
 .nav-tog[aria-expanded="true"] .ic-close{display:block}
+.mob-actions{display:none}
 .nav-cta-mob{display:none}
+
+.nav-cta-desk,
+.nav-cta-mob{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-decoration:none;
+  font-family:var(--disp);
+  font-weight:800;
+  color:#fff;
+  background:linear-gradient(135deg,#12A14D 0%,var(--green) 55%,var(--greend) 100%);
+  box-shadow:0 8px 20px rgba(10,138,64,.28),inset 0 1px 0 rgba(255,255,255,.32);
+  overflow:hidden;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+
+.nav-cta-desk{
+  min-height:42px;
+  padding:0 20px;
+  border-radius:999px;
+  font-size:14.5px;
+  white-space:nowrap;
+}
+
+.nav-cta-mob{
+  display:none;
+  width:100%;
+  min-height:46px;
+  padding:0 18px;
+  border-radius:14px;
+  font-size:15.5px;
+}
+
+.nav-cta-desk::after,
+.nav-cta-mob::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-110%;
+  width:65%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);
+  transform:skewX(-20deg);
+  transition:left .5s ease;
+  pointer-events:none;
+}
+
+.nav-cta-desk:hover,
+.nav-cta-mob:hover{
+  transform:translateY(-2px);
+  background:linear-gradient(135deg,#15B357 0%,#0B9947 55%,#076E32 100%);
+  box-shadow:0 12px 26px rgba(10,138,64,.38),inset 0 1px 0 rgba(255,255,255,.4);
+}
+
+.nav-cta-desk:hover::after,
+.nav-cta-mob:hover::after{
+  left:135%;
+}
+
+.nav-cta-desk:active,
+.nav-cta-mob:active{
+  transform:translateY(0) scale(.98);
+}
+
+.nav-cta-desk:focus-visible,
+.nav-cta-mob:focus-visible{
+  outline:3px solid var(--gold);
+  outline-offset:2px;
+}
 
 /* ---------- hero ---------- */
 .hero{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,470px),1fr));gap:30px;align-items:center;max-width:1200px;margin:0 auto;padding:44px 24px 96px}
@@ -338,7 +411,7 @@ html[lang="en"]{--disp:'Plus Jakarta Sans','Hind Siliguri',sans-serif}
 @media (max-width:900px){
   .nav{padding:12px 16px 0}
   .nav-in{flex-wrap:wrap;padding:10px 12px}
-  .nav-cta-desk{display:none}
+  .lang-desk,.nav-cta-desk{display:none}
   .nav-tog{display:inline-flex}
   .nav-drawer{display:none;order:4;width:100%;flex-direction:column;gap:8px;padding-top:12px;margin-top:8px;border-top:1px solid var(--line)}
   .nav-drawer.open{display:flex;animation:pagein .22s ease both}
@@ -346,7 +419,9 @@ html[lang="en"]{--disp:'Plus Jakarta Sans','Hind Siliguri',sans-serif}
   .nl{width:100%;min-height:46px;padding:10px 14px;border-bottom:0;border-left:4px solid transparent;border-radius:12px;font-size:16px}
   .nl:hover{background:var(--paper)}
   .nl.on{background:var(--mint);border-left-color:var(--green);color:var(--greend)}
-  .nav-cta-mob{display:inline-flex;width:100%;margin-top:4px}
+  .mob-actions{display:flex;flex-direction:column;gap:10px;padding-top:6px}
+  .lang-mob{align-self:flex-start}
+  .nav-cta-mob{display:inline-flex;width:100%}
   .hero{padding:30px 20px 90px}
   .phead{padding:30px 20px 160px}
   .sec{padding:72px 0}
